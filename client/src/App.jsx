@@ -1,10 +1,10 @@
-import Login from "./components/account/Login"
+import LoginSignup from "./components/account/LoginSignup"
 
 function App() {
 
   return (
     <>
-      <Login />
+      <LoginSignup />
     </>
   )
 }
