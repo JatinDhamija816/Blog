@@ -1,11 +1,10 @@
-import LoginSignup from "./components/account/LoginSignup"
+import React from 'react'
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <LoginSignup />
-    </>
+    <div>
+      Hello
+    </div>
   )
 }
 
