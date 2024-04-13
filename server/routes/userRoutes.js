@@ -3,8 +3,8 @@ import { getAllUsers, login, RegisterUser } from '../controllers/userControllers
 
 const router = express()
 
-router.get('/allUsers', getAllUsers)
 router.post('/register', RegisterUser)
+router.get('/allUsers', getAllUsers)
 
 router.post('/login', login)
 

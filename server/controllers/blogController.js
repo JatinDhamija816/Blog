@@ -101,15 +101,41 @@ export const updateBlog = async (req, res) => {
 
 export const deleteBlog = async (req, res) => {
     try {
-        blogModel.findByIdAndDelete(req.params.id)
+        const blog = await blogModel.findByIdAndDelete(req.params.id).populate("user")
+        await blog.user.blogs.pull(blog)
+        await blog.user.save()
         return res.status(201).send({
             success: true,
             message: "Blog Deleted"
         })
     } catch (error) {
+        console.log(error)
         return res.status(500).send({
             success: false,
             message: 'Error in deleteBlog'
+        })
+    }
+}
+
+export const userBlogByID = async (req, res) => {
+    try {
+        const { id } = req.params
+        const userBlog = await userModel.findById(id).populate('blogs')
+        if (!userBlog) {
+            return res.status(404).send({
+                success: false,
+                message: "Blog not find with this id"
+            })
+        }
+        return res.status(201).send({
+            success: true,
+            message: "All User Blog",
+            userBlog
+        })
+    } catch (error) {
+        return res.status(500).send({
+            success: false,
+            message: 'Error in userBlogByID'
         })
     }
 }
