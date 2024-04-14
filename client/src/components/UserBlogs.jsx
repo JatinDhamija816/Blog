@@ -21,18 +21,18 @@ const UserBlogs = () => {
         getUserBlogs()
     }, [])
     return (
-        <>
+        <div className='flex flex-wrap justify-center'>
             {
                 blogs && blogs.length > 0 ?
                     (blogs.map((blog) => (
-                        <div key={blog?._id} className='border min-h-36 w-1/3 m-auto my-5'>
-                            <div>
+                        <div key={blog?._id} className='bg-slate-200 border max-h-fit w-1/3 mx-10 my-5 rounded-lg'>
+                            <div className='flex justify-between m-3'>
                                 <div>
-                                    <h1>title: {blog?.title}</h1>
+                                    <h1 className='text-lg font-mono'><span className='font-bold text-lg'>Title</span>: {blog?.title}</h1>
                                 </div>
                                 <div>
                                     <div>
-                                        <button onClick={() => { navigate(`/editBlog/${blog?._id}`) }}><EditIcon /></button>
+                                        <button onClick={() => { navigate(`/editBlog/${blog?._id}`) }}><EditIcon color='primary' /></button>
                                         <button onClick={async () => {
                                             try {
                                                 const { data } = await axios.delete(`http://localhost:5000/api/v1/blog/deleteBlog/${blog?._id}`)
@@ -43,23 +43,24 @@ const UserBlogs = () => {
                                             } catch (error) {
                                                 console.log(error)
                                             }
-                                        }}><DeleteIcon /></button>
+                                        }}><DeleteIcon color='error' /></button>
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <img src={blog?.image} alt="" />
+                            <div className='flex justify-center m-8'>
+                                <img className='max-h-48 text-center' src={blog?.image} alt="" />
                             </div>
-                            <div>
-                                <p>description : {blog?.description}</p>
-                            </div>
-                            <div>
-                                <p>Date : {blog.createdAt}</p>
+                            <div className='m-3'>
+                                <p className='font-serif'><span className='font-bold text-lg'>Description</span> : {blog?.description}</p>
                             </div>
                         </div>
-                    ))) : <h1>You have not created a blog</h1>
+                    )))
+                    :
+                    <div className='flex justify-center min-h-96 items-center'>
+                        <h1 className='font-bold text-3xl font-mono '>You have not created any blog</h1>
+                    </div>
             }
-        </>
+        </div>
     )
 }
 

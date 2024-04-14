@@ -11,8 +11,10 @@ const Navbar = () => {
     const handleLogout = () => {
         try {
             dispatch(authActions.logout())
+            if (isLogin === false) {
+                navigate('/')
+            }
             alert('Logout Successfully')
-            navigate('/login')
             localStorage.clear()
         } catch (error) {
             console.log(error)
@@ -21,15 +23,21 @@ const Navbar = () => {
     return (
         <div className='min-h-14 bg-black flex justify-between'>
             <div className='flex my-auto mx-10'>
-                <h1 className='text-white text-xl'>Blog App</h1>
+                <Link to='/'><h1 className='text-white text-xl'>Blog App</h1></Link>
             </div>
             {
                 isLogin
                 &&
-                <div className='flex my-auto '>
-                    <Link className='text-white text-xl m-2' to='/'>All blogs</Link>
-                    <Link className='text-white text-xl m-2' to='/userBlog'>My blogs</Link>
-                    <Link className='text-white text-xl m-2' to='/createBlog'>Create Blog</Link>
+                <div className='flex justify-center w-2/3 my-auto'>
+                    <div>
+                        <Link className='text-white text-xl m-2' to='/blog'>All blogs</Link>
+                    </div>
+                    <div>
+                        <Link className='text-white text-xl m-2' to='/userBlog'>My blogs</Link>
+                    </div>
+                    <div>
+                        <Link className='text-white text-xl m-2' to='/createBlog'>Create Blog</Link>
+                    </div>
                 </div>
             }
             <div className='flex my-auto mx-10'>

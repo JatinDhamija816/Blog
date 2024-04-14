@@ -41,20 +41,21 @@ const UpdateBlog = () => {
         getBlogDetails()
     }, [id])
     return (
-        <div>
-            <div className='border  m-auto w-1/3 '>
-                <div className='mx-auto w-2/3'>
-                    <input type="text" placeholder='Enter title' name='title' value={inputs.title} onChange={handleChange} className='w-2/3 p-3 border-b-2' />
-                </div>
-                <div className='mx-auto  w-2/3'>
-                    <input type="text" placeholder='Enter Description' name='description' value={inputs.description} onChange={handleChange} className='w-2/3 p-3 border-b-2' />
-                </div>
-                <div className='mx-auto  w-2/3'>
-                    <input type="text" placeholder='Enter image' name='image' value={inputs.image} onChange={handleChange} className='w-2/3 p-3 border-b-2' />
-                </div>
-                <div className='mx-auto w-2/3'>
-                    <button className='bg-black text-white w-2/3' onClick={handleSubmit}>Update</button>
-                </div>
+        <div className='m-auto w-3/5 mt-20'>
+            <div className='mx-auto w-2/3 my-5'>
+                <h1 className='text-center font-bold text-3xl font-mono '>Update Blog</h1>
+            </div>
+            <div className='mx-auto w-2/3 my-5'>
+                <input type="text" placeholder='Enter title' name='title' value={inputs.title} onChange={handleChange} className='w-full p-3 border-b-2 rounded-lg' />
+            </div>
+            <div className='mx-auto w-2/3 my-5'>
+                <input type="text" placeholder='Enter Description' name='description' value={inputs.description} onChange={handleChange} className='w-full p-3 border-b-2 rounded-lg' />
+            </div>
+            <div className='mx-auto w-2/3 my-5'>
+                <input type="text" placeholder='Enter image' name='image' value={inputs.image} onChange={handleChange} className='w-full p-3 border-b-2 rounded-lg' />
+            </div>
+            <div className='mx-auto w-2/5'>
+                <button className='bg-black text-white w-full my-5 p-2 rounded-2xl' onClick={handleSubmit}>Update</button>
             </div>
         </div>
     )

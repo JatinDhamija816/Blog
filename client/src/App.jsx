@@ -7,13 +7,14 @@ import Blog from './components/Blog'
 import UserBlogs from './components/UserBlogs'
 import CreateBlog from './components/CreateBlog'
 import UpdateBlog from './components/UpdateBlog'
-import { Toaster } from 'react-hot-toast';
+import Home from './components/Home'
 const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Blog />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/blog' element={<Blog />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/createBlog' element={<CreateBlog />} />
