@@ -26,10 +26,10 @@ export const RegisterUser = async (req, res) => {
             user
         })
     } catch (error) {
+        console.log(error)
         return res.status(500).send({
             message: "Error in Register",
             success: false,
-            error
         })
     }
 }
@@ -44,6 +44,7 @@ export const getAllUsers = async (req, res) => {
             users,
         })
     } catch (error) {
+        console.log(error)
         return res.status(500).send({
             success: false,
             message: "Error while get All users",
@@ -83,6 +84,7 @@ export const login = async (req, res) => {
             })
         }
     } catch (error) {
+        console.log(error)
         return res.status(500).send({
             success: false,
             message: "Error in login",

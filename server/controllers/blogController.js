@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
 import blogModel from "../models/blogModel.js";
 import userModel from "../models/userModel.js";
+
 export const createBlog = async (req, res) => {
     try {
         const { title, description, image, user } = req.body
         if (!title || !description || !image || !user) {
             return res.status(401).send({
+                success: false,
                 message: "Please fill all deatils"
             })
         }
@@ -32,6 +34,7 @@ export const createBlog = async (req, res) => {
             newblog
         })
     } catch (error) {
+        console.log(error)
         return res.status(500).send({
             success: false,
             message: 'Error in createBlog',
@@ -42,7 +45,13 @@ export const createBlog = async (req, res) => {
 
 export const getAllBlog = async (req, res) => {
     try {
-        const blogs = await blogModel.find({})
+        const blogs = await blogModel.find({}).populate('user')
+        if (!blogs) {
+            return res.status(200).send({
+                success: false,
+                message: 'No Blogs Found'
+            })
+        }
         return res.status(200).send({
             success: true,
             message: "All Blogs",
@@ -50,6 +59,7 @@ export const getAllBlog = async (req, res) => {
             blogs,
         })
     } catch (error) {
+        console.log(error)
         return res.status(500).send({
             success: false,
             message: 'Error in getAllBlog',
@@ -74,6 +84,7 @@ export const getBlogById = async (req, res) => {
             blog
         })
     } catch (error) {
+        console.log(error)
         return res.status(500).send({
             success: false,
             message: 'Error in getBlogById'
@@ -91,6 +102,7 @@ export const updateBlog = async (req, res) => {
             blog
         })
     } catch (error) {
+        console.log(error)
         return res.status(500).send({
             success: false,
             message: 'Error in updateBlog',
@@ -119,8 +131,7 @@ export const deleteBlog = async (req, res) => {
 
 export const userBlogByID = async (req, res) => {
     try {
-        const { id } = req.params
-        const userBlog = await userModel.findById(id).populate('blogs')
+        const userBlog = await userModel.findById(req.params.id).populate("blogs")
         if (!userBlog) {
             return res.status(404).send({
                 success: false,
@@ -129,10 +140,11 @@ export const userBlogByID = async (req, res) => {
         }
         return res.status(201).send({
             success: true,
-            message: "All User Blog",
+            message: "User Blog",
             userBlog
         })
     } catch (error) {
+        console.log(error)
         return res.status(500).send({
             success: false,
             message: 'Error in userBlogByID'
