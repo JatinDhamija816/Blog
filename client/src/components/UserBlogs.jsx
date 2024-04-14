@@ -9,7 +9,7 @@ const UserBlogs = () => {
     const getUserBlogs = async () => {
         try {
             const id = localStorage.getItem('userId')
-            const { data } = await axios.get(`http://localhost:5000/api/v1/blog/userBlog/${id}`)
+            const { data } = await axios.get(`https://blog-f5ew.onrender.com/userBlog/${id}`)
             if (data?.success) {
                 setBlogs(data?.userBlog.blogs)
             }
@@ -35,7 +35,7 @@ const UserBlogs = () => {
                                         <button onClick={() => { navigate(`/editBlog/${blog?._id}`) }}><EditIcon color='primary' /></button>
                                         <button onClick={async () => {
                                             try {
-                                                const { data } = await axios.delete(`http://localhost:5000/api/v1/blog/deleteBlog/${blog?._id}`)
+                                                const { data } = await axios.delete(`https://blog-f5ew.onrender.com/deleteBlog/${blog?._id}`)
                                                 if (data?.success) {
                                                     alert('Blog delete ')
                                                     navigate('/')
