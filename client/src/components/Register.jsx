@@ -16,7 +16,7 @@ const Register = () => {
                 alert('Please fill all details')
                 return
             }
-            const { data } = await axios.post('https://blog-f5ew.onrender.com/register', inputs)
+            const { data } = await axios.post('https://blog-f5ew.onrender.com/api/v1/user/register', inputs)
             if (data.success) {
                 alert('User Register ')
                 navigate('/login')

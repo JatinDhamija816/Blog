@@ -15,7 +15,7 @@ const CreateBlog = () => {
         e.preventDefault()
         try {
 
-            const { data } = await axios.post('https://blog-f5ew.onrender.com/create', inputs)
+            const { data } = await axios.post('https://blog-f5ew.onrender.com/api/v1/blog/create', inputs)
             if (data.success) {
                 alert('Blog Created Successfully')
                 navigate('/userBlog')
