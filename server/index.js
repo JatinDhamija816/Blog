@@ -4,7 +4,8 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import userRoute from './routes/userRoutes.js'
 import blogRoute from './routes/blogRoutes.js'
-import Connection from './Database/db.js'
+import Connection from './database/db.js'
+
 
 dotenv.config()
 const app = express()
