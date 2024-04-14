@@ -2,9 +2,9 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import Connection from './Database/db.js'
 import userRoute from './routes/userRoutes.js'
 import blogRoute from './routes/blogRoutes.js'
+import Connection from './Database/db.js'
 
 dotenv.config()
 const app = express()
