@@ -19,7 +19,7 @@ const Login = () => {
                 alert('Please fill all details')
                 return
             }
-            const { data } = await axios.post('https://blog-f5ew.onrender.com/api/v1/user/login', inputs)
+            const { data } = await axios.post('https://blog-f5ew.onrender.com/login', inputs)
             if (!data.success) {
                 alert('Error in login')
                 return

@@ -8,7 +8,7 @@ const UpdateBlog = () => {
     const [inputs, setInputs] = useState({ title: '', description: '', image: '', user: id })
     const getBlogDetails = async () => {
         try {
-            const { data } = await axios.get(`https://blog-f5ew.onrender.com/api/v1/blog/getBlog/${id}`)
+            const { data } = await axios.get(`https://blog-f5ew.onrender.com/getBlog/${id}`)
             if (data?.success) {
                 setBlog(data?.blog)
                 setInputs({
@@ -28,7 +28,7 @@ const UpdateBlog = () => {
         e.preventDefault()
         try {
 
-            const { data } = await axios.put(`https://blog-f5ew.onrender.com/api/v1/blog/updateBlog/${id}`, inputs)
+            const { data } = await axios.put(`https://blog-f5ew.onrender.com/updateBlog/${id}`, inputs)
             if (data.success) {
                 alert('Blog Updated Successfully')
                 navigate('/userBlog')

@@ -11,8 +11,8 @@ dotenv.config()
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
-app.use('/api/v1/user', userRoute)
-app.use('/api/v1/blog', blogRoute)
+app.use('/', userRoute)
+app.use('/', blogRoute)
 
 const Port = process.env.PORT || 5000
 app.listen(Port, (req, res) => {
